@@ -1,0 +1,28 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col col-md-8">
+
+      <h2>Detail Contact</h2>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <% if (!contact) { %>
+            <div class="alert alert-danger fw-bold" role="alert">
+              <%= namae %> is not found!
+            </div>
+            <a href="/contacts" class="alert-link fw-normal text-decoration-none">
+              <i class="bi bi-chevron-double-left fst-normal">Back</i>
+            </a>
+          <% }else{ %>
+            <img src="https://source.unsplash.com/random/175x175" class="card-img-top" alt="...">
+            <h5 class="card-title"><%= contact.name %> </h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illo voluptas dolor debitis, id iste, quia quasi nesciunt doloremque, ipsam voluptates molestiae! Inventore blanditiis consequatur quas praesentium, tempore magni distinctio.</p>
+            <li><%= contact.phoneNum %> </li>
+            <li><%= contact.email %> </li>
+            <a href="/contacts" class="btn btn-primary mt-3">Back</a>
+          <% }; %> 
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

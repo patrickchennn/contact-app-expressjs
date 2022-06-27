@@ -1,4 +1,4 @@
-import * as contact from "./utils/contacts.js";
+import * as con from "./utils/contacts.js";
 import express from "express";
 
 const app = express();
@@ -20,12 +20,25 @@ app.get('/about', (req, res) => {
   });
 });
 app.get('/contacts', (req, res) => {
-  const contacts = contact.getContact();
+  const contacts = con.getContacts();
   
   res.render("layouts/main", {
     title:"contacts page",
     page:"contacts.ejs",
     contacts
+  });
+});
+
+app.get('/contacts/:name', (req, res) => {
+  const namae = req.params.name;
+  console.log(namae);
+  const contact = con.getSpecificContact(namae);
+  console.log(contact);
+  res.render("layouts/main", {
+    title:"contacts page",
+    page:"detail.ejs",
+    contact,
+    namae
   });
 });
 

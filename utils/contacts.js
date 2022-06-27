@@ -21,9 +21,15 @@ fs.access(contactPath, constants.F_OK, err => {
   }
 });
 
-export const getContact = () => {
+export const getContacts = () => {
   const rawData = fs.readFileSync(contactPath,{encoding:"utf-8"});
   const currContact = JSON.parse(rawData);
 
   return currContact;
+}
+
+export const getSpecificContact = (namae) => {
+  const contacts = getContacts();
+  return (contacts.find(contact => contact.name === namae));
+
 }
