@@ -1,6 +1,6 @@
 import * as contact from "./utils/contacts.js";
-
 import express from "express";
+
 const app = express();
 const port = 3000;
 
@@ -19,11 +19,13 @@ app.get('/about', (req, res) => {
     page:"about.ejs"
   });
 });
-
 app.get('/contacts', (req, res) => {
+  const contacts = contact.getContact();
+  
   res.render("layouts/main", {
     title:"contacts page",
-    page:"contacts.ejs"
+    page:"contacts.ejs",
+    contacts
   });
 });
 
