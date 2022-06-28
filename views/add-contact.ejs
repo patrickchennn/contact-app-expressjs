@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col col-5">
+      <form action="/add-contact" method="post">
+        <p class="fst-italic">* is required to fill</p>
+        <div class="mb-3">
+          <label for="name" class="form-label">
+            Name<span class="text-danger">*</span>
+          </label>
+          <input type="text" class="form-control" name="name" id="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone-number" class="form-label">
+            Phone Number<span class="text-danger">*</span>
+          </label>
+          <input type="number" class="form-control" name="phoneNum" id="phone-number" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" id="email">
+        </div>
+        <div class="mb-3">
+          <label for="desc" class="form-label">Description</label>
+          <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+      </form>
+    </div>
+  </div>
+</div>

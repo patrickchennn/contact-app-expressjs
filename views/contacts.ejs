@@ -1,6 +1,8 @@
 <div class="container mt-5">
   <button type="button" class="btn">
-    <i class="bi bi-plus-circle"></i>
+    <a href="/add-contact">
+      <i class="bi bi-plus-circle"></i>
+    </a>
   </button>
 
   <table class="table">
@@ -13,6 +15,7 @@
       </tr>
     </thead>
     <tbody>
+
       <% if (contacts.length===0) { %>
         <tr>
           <td colspan="4">
@@ -44,7 +47,7 @@
             <td><%= contact["phoneNum"] %> </td>
             
             <td>
-              <a href="/contacts/<%= contact.name %>" class="btn btn-success badge rounded-pill">
+              <a href="/contacts/<%= contact.name %>" class="btn btn-info badge rounded-pill">
                 <i class="bi bi-info-circle fst-normal"> Detail</i>
               </a>
               <a href="#" class="btn btn-success badge rounded-pill">
@@ -57,6 +60,7 @@
           </tr>
         <% }) %>
       <% }; %> 
+
     </tbody>
   </table>
 </div>
