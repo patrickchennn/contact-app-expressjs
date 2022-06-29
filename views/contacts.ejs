@@ -1,10 +1,15 @@
 <div class="container mt-5">
-  <button type="button" class="btn">
-    <a href="/add-contact">
+  <a href="/add-contact">
+    <button type="button" class="btn">
       <i class="bi bi-plus-circle"></i>
-    </a>
-  </button>
-
+    </button>
+  </a>
+  <!-- if the data is registered/added/inserted, then tell the user -->
+  <% if (msg.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= msg %> 
+    </div>
+  <% } %>
   <table class="table">
     <thead>
       <tr>
@@ -16,6 +21,7 @@
     </thead>
     <tbody>
 
+      <!-- if there is data inside of contacts.json -->
       <% if (contacts.length===0) { %>
         <tr>
           <td colspan="4">

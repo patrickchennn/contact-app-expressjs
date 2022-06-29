@@ -1,31 +1,62 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col col-5">
+
       <form action="/add-contact" method="post">
         <p class="fst-italic">* is required to fill</p>
+        
         <div class="mb-3">
           <label for="name" class="form-label">
             Name<span class="text-danger">*</span>
           </label>
           <input type="text" class="form-control" name="name" id="name" required>
+          
+          <!-- send error message to the user -->
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("name")) { %>
+            <div class="alert alert-danger pt-2" role="alert">
+              <p class="mb-0"><%= errorMaps.get("name") %>  is already taken!</p>
+            </div>
+          <% } %>
         </div>
+
         <div class="mb-3">
           <label for="phone-number" class="form-label">
             Phone Number<span class="text-danger">*</span>
           </label>
           <input type="number" class="form-control" name="phoneNum" id="phone-number" required>
+
+          <!-- send error message to the user -->
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("phoneNum")) { %>
+            <div class="alert alert-danger pt-2" role="alert">
+              <p class="mb-0"><%= errorMaps.get("phoneNum") %>  is an invalid phone number!</p>
+            </div>
+          <% } %>
         </div>
+
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" name="email" id="email">
+
+          <!-- send error message to the user -->
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("email")) { %>
+            <div class="alert alert-danger pt-2" role="alert">
+              <p class="mb-0"><%= errorMaps.get("email") %>  is an invalid email!</p>
+            </div>
+          <% } %>
         </div>
+
         <div class="mb-3">
           <label for="desc" class="form-label">Description</label>
           <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
         </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-warning">Clear</button>
+        <a href="/contacts">
+          <button type="button" class="btn btn-info">Back</button>
+        </a>
       </form>
     </div>
+
   </div>
 </div>

@@ -76,4 +76,15 @@ export const getSpecificContact = (namae) => {
 
     }
   })
-}
+};
+
+
+export const isDuplicate = (attr,value) => {
+  const contacts = getContacts();
+  for(const contact of contacts){
+    if(contact[attr] === value){
+      return true;
+    }
+  }
+  return false;
+};
