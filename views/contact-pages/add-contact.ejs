@@ -1,17 +1,16 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="row">
     <div class="col col-5">
-
-      <form action="/add-contact" method="post">
+      <form action="/add-contact" method="post" enctype="multipart/form-data">
         <p class="fst-italic">* is required to fill</p>
         
+        <!-- name -->
         <div class="mb-3">
           <label for="name" class="form-label">
             Name<span class="text-danger">*</span>
           </label>
           <input type="text" class="form-control" name="name" id="name" required>
           
-          <!-- send error message to the user -->
           <% if (typeof(errorMaps)!="undefined" && errorMaps.has("name")) { %>
             <div class="alert alert-danger pt-2" role="alert">
               <p class="mb-0"><%= errorMaps.get("name") %>  is already taken!</p>
@@ -19,25 +18,35 @@
           <% } %>
         </div>
 
+        <!-- phone number -->
         <div class="mb-3">
           <label for="phone-number" class="form-label">
             Phone Number<span class="text-danger">*</span>
           </label>
-          <input type="number" class="form-control" name="phoneNum" id="phone-number" required>
+          <input type="number" class="form-control" name="phoneNumber" id="phone-number" required>
 
-          <!-- send error message to the user -->
-          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("phoneNum")) { %>
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("phoneNumber")) { %>
             <div class="alert alert-danger pt-2" role="alert">
-              <p class="mb-0"><%= errorMaps.get("phoneNum") %>  is an invalid phone number!</p>
+              <p class="mb-0"><%= errorMaps.get("phoneNumber") %>  is an invalid phone number!</p>
             </div>
           <% } %>
         </div>
 
+        <!-- upload photo profile -->
+        <div class="mb-3">
+          <div class="mb-3">
+            <label for="formFile" class="form-label">
+              Photo<span class="text-danger">*</span>
+            </label>
+            <input class="form-control" name="photoProfile" type="file" id="formFile">
+          </div>
+        </div>
+
+        <!-- email  -->
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" name="email" id="email">
 
-          <!-- send error message to the user -->
           <% if (typeof(errorMaps)!="undefined" && errorMaps.has("email")) { %>
             <div class="alert alert-danger pt-2" role="alert">
               <p class="mb-0"><%= errorMaps.get("email") %>  is an invalid email!</p>
@@ -45,18 +54,18 @@
           <% } %>
         </div>
 
+        <!-- description -->
         <div class="mb-3">
           <label for="desc" class="form-label">Description</label>
           <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
         </div>
 
+        <a href="/contacts" class="fw-normal text-decoration-none text-secondary">
+          <i class="bi bi-chevron-double-left fst-normal">Back</i>
+        </a>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-warning">Clear</button>
-        <a href="/contacts">
-          <button type="button" class="btn btn-info">Back</button>
-        </a>
       </form>
     </div>
-
   </div>
 </div>

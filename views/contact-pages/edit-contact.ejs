@@ -1,0 +1,72 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col col-5">
+      <form action="/contacts/edit-contact" method="post" enctype="multipart/form-data">
+        <input type="hidden" class="form-control" name="oldName" id="name" value="<%= (contact.oldName) ? contact.oldName : contact.name %>">
+
+        <!-- name -->
+        <div class="mb-3">
+          <label for="newName" class="form-label">New Name</label>
+
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("newName")) { %>
+            <input required type="text" class="form-control" name="newName" id="newName" value="<%= errorMaps.get("newName") %>">
+
+            <div class="alert alert-danger pt-2" role="alert">
+              <p class="mb-0"><%= errorMaps.get("newName") %> is already taken!</p>
+            </div>
+          <% }else{ %>
+            <input required type="text" class="form-control" name="newName" id="newName" placeholder="<%= contact.name %>">
+          <% } %>
+        </div>
+
+        <!-- phone number -->
+        <div class="mb-3">
+          <label for="phone-number" class="form-label">Phone Number</label>
+
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("phoneNumber")) { %>
+            <input required type="number" class="form-control" name="phoneNumber" id="phone-number" value="<%= errorMaps.get("phoneNumber") %>">
+
+            <div class="alert alert-danger pt-2" role="alert">
+              <p class="mb-0"><%= errorMaps.get("phoneNumber") %>  is an invalid phone number!</p>
+            </div>
+          <% }else{ %>
+            <input required type="number" class="form-control" name="phoneNumber" id="phone-number" placeholder="<%= contact.phoneNumber %>">
+          <% } %>
+        </div>
+
+        <!-- email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+
+          <% if (typeof(errorMaps)!="undefined" && errorMaps.has("email")) { %>
+            <input type="email" class="form-control" name="email" id="email" value="<%= errorMaps.get("email") %>">
+            <div class="alert alert-danger pt-2" role="alert">
+              <p class="mb-0"><%= errorMaps.get("email") %>  is an invalid email!</p>
+            </div>
+          <% }else{ %>
+            <input type="email" class="form-control" name="email" id="email" value="<%= contact.email %>">
+          <% } %> 
+        </div>
+
+        <!-- upload photo profile -->
+        <div class="mb-3">
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Photo</label>
+            <input class="form-control" name="photoProfile" type="file" id="formFile">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="desc" class="form-label">Description</label>
+          <textarea class="form-control" name="desc" id="desc" rows="3"><%= contact.desc %></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Clear</button>
+        <a href="/contacts">
+          <button type="button" class="btn btn-info">Back</button>
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
